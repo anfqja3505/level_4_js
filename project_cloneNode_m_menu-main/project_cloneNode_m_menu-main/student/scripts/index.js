@@ -18,19 +18,8 @@ let booleanMenu = 0;//안보이는 초기값(상태변수)설정
 console.log(m_nav_btn, m_nav_bg)
 
 m_nav_btn.addEventListener('click',()=>{
-    booleanMenu == 0 ? menuHideShow('1', '0', '#fff') : menuHideShow()
-})
-
-function menuHideShow(opacityVal='0', rightVal='-100%', color='#222') {
     booleanMenu = !booleanMenu;
-    m_nav_btn.children[0].style.backgroundColor = color;
-    m_nav_btn.children[1].style.backgroundColor = color;
-    m_nav_btn.children[2].style.backgroundColor = color;
-    m_nav_bg.style.opacity = opacityVal;
-    m_nav_bg.style.right = rightVal;
-    m_nav_bg.style.transition = 'right 1s, opacity 1s';
-}
-booleanMenu == 0 ? (()=>{
+    booleanMenu == 0 ? (()=>{
     //보인다(거짓) -> right:100%, opacity:0
     m_nav_bg.style.opacity = '0%';
     m_nav_bg.style.right = '1';
@@ -39,5 +28,6 @@ booleanMenu == 0 ? (()=>{
         m_nav_bg.style.opacity = '-100%';
     m_nav_bg.style.right = '0';
 })()
+})
 
 
