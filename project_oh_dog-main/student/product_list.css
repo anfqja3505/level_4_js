@@ -47,7 +47,7 @@ main .item_detail .left_thum {
     width: 600px;
 }
 main .item_detail .left_thum .small_thum {gap: 10px;}
-main .item_detail .left_thum .small_thum .small {cursor: pointer;}
+main .item_detail .left_thum .small_thum .small {width:60px; cursor: pointer;}
 main .item_detail .left_thum .small_thum .small img {width: 100%;}
 main .item_detail .left_thum .big_thum {
     cursor: pointer;
