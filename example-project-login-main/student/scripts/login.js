@@ -35,29 +35,96 @@ function loginTabFunc(index) {
 }
 
 //목표2) 기존회원 - 아이디를 입력안하고 기존회원로그인 버튼 클릭 시 '아이디를 입력하세요' 경고장 출력
-const memberLoginBtn = document.querySelector('#member-login');
-const nonMemberLoginBtn = document.querySelector('#non-member-login');
+//기존회원 - 아이디, 비밀번호, 로그인 버튼 변수
 const userIdInput = document.querySelector('#user-id');
 const userPwInput = document.querySelector('#user-pw');
+const memberLoginBtn = document.querySelector('#member-login');
+const pwVisibleBtn = document.querySelector('#member-pw-visible')
+//비회원 - 주문자명, 주문번호, 비회원 주문 비밀번호, 주문조회 버튼 변수
+const nonMemberLoginBtn = document.querySelector('#non-member-login');
 const nonUserName = document.querySelector('#non-user-id');
 const nonUserPw = document.querySelector('#non-user-pw');
 const nonUserOrder = document.querySelector('#non-user-order');
+const nonPwVisibleBtn = document.querySelector('#non-member-pw-visible')
+
 
 console.log(userIdInput, memberLoginBtn);
 
-memberLoginBtn.addEventListener('click',()=>{
-    loginErrorfunc(userIdInput, '아이디');
-    loginErrorfunc(userPwInput, '비밀번호');
-})
-nonMemberLoginBtn.addEventListener('click',()=>{
-    loginErrorfunc(nonUserName, '주문자명');
-    loginErrorfunc(nonUserOrder, '주문번호');
-    loginErrorfunc(nonUserPw, '비회원 주문 비밀번호');
-})
+// memberLoginBtn.addEventListener('click',()=>{
+//     loginErrorfunc(userIdInput, '아이디');
+//     loginErrorfunc(userPwInput, '비밀번호');
+// })
+// nonMemberLoginBtn.addEventListener('click',()=>{
+//     loginErrorfunc(nonUserName, '주문자명');
+//     loginErrorfunc(nonUserOrder, '주문번호');
+//     loginErrorfunc(nonUserPw, '비회원 주문 비밀번호');
+// })
 
 
 function loginErrorfunc(dom, str) {
     if(dom.value == ''){alert(`${str}를(을) 입력하세요`);}
 }
 
+//논리연산자 활용한 아이디&비밀번호 동시 검사 수행 이벤트 + 함수
+memberLoginBtn.addEventListener('click',()=>{
+    //목표1) 아이디, 비밀번호 중 하나라도 안적으면 'ooo를 입력하세요'
+    //if(userIdInput.value == '' && userPwInput.value == ''){}
+    if(userIdInput.value == '' || userPwInput.value == ''){
+        if(userIdInput.value == '' && userPwInput.value == ''){
+            alert('아이디와 비밀번호를 입력하세요.')
+        }else if(userIdInput.value == ''){//하나의 조건세트에서 두번째 조건식이 필요할 때
+            alert('아이디를 입력하세요')
+        }else{// 조건세트 안에 거짓을 처리할때 (마지막에 한번만 작성 가능)
+            alert('비밀번호를 입력하세요')
+        }
+    }
+    //목표2) 아이디, 비밀번호를 모두 적으면 'ooo님 환영합니다'
+    // if(userIdInput.value != '' && userPwInput.value != ''){
+    //     alert(`${userIdInput.value}님 환영합니다.`)
+    // }
+    //삼항조건 ? 참 : 거짓;
+    //조건식 1개로 처리하는 if-else를 간편하게 쓰고 싶을때
+    userIdInput.value != '' && userPwInput.value != '' ?
+        alert(`${userIdInput.value}님 환영합니다.`) : undefined;//or null 
+})
 
+//비회원 이벤트 -함수
+//목표1) 주문자명, 주문번호, 비회용 주문비번을 모두 썼을 때 "ooo님 주문은 배송중입니다."
+nonMemberLoginBtn.addEventListener('click',()=>{
+    // if(nonUserName.value != '' && nonUserPw.value != '' && nonUserOrder.value != ''){
+    //     alert(`${nonUserName.value}님 주문은 배송중입니다.`)
+    // }
+    nonUserName.value != '' && nonUserPw.value != '' && nonUserOrder.value != '' ?
+        alert(`${nonUserName.value}님 주문은 배송중입니다.`) : null;
+    
+    if(nonUserName.value == '' || nonUserPw.value == '' || nonUserOrder.value == ''){
+        if(nonUserName.value == '' && nonUserPw.value == '' && nonUserOrder.value == ''){
+            alert(`주문자명, 주문번호, 주문비밀번호를 입력해주세요.`)
+        }else if(nonUserName.value == ''){
+            alert(`주문자명을 입력해주세요.`)
+        }else if(nonUserOrder.value == ''){
+            alert(`주문번호를 입력해주세요.`)
+        }else {
+            alert(`주문비밀번호를 입력해주세요.`)
+        }
+    }
+})
+
+//기존회원) 눈 아이콘 클릭 시 비밀번호 보이기/다시 누르면 비밀번호 숨기기
+let pwVisibleStatus = 0; //비번 숨긴형태 초기값
+pwVisibleBtn.addEventListener('click',()=>{
+    pwVisibleStatus == 0 ?
+        userPwInput.type = 'text'
+        : userPwInput.type = 'password'
+    pwVisibleStatus = !pwVisibleStatus;
+    return;
+})
+
+let nonPwVisibleStatus = 0;
+nonPwVisibleBtn.addEventListener('click',()=>{
+    nonPwVisibleStatus == 0 ?
+        nonUserPw.type = 'text'
+        : nonUserPw.type = 'password'
+    nonPwVisibleStatus = !nonPwVisibleStatus;
+    return;
+})
