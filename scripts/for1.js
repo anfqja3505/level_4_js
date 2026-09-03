@@ -58,5 +58,5 @@ const copy_md_pick_li = md_pick_li.cloneNode(true);//자식,자손까지 복제
 //상품을 10개 복제 - 붙여넣기
 
 for(let i=0; i<10; i++){
-    md_pick_ul.appendChild(md_pick_li.cloneNode(true))
+    md_pick_ul.appendChild(md_pick_li.cloneNode(true));
 }
