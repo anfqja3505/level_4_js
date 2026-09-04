@@ -15,6 +15,12 @@
   <script src="./scripts/anime_db.js"></script>
   <script src="./scripts/index.js" defer></script>
   <!-- 애니메이션 -->
+  <!--swiper 필수 css cdn 연결-->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <!--swiper 필수 JS cdn 연결-->
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
   <!-- header>h1>a>img  -->
@@ -43,6 +49,34 @@
         <a href="#"><img src="포스터경로일 alt="애니메이션명"></a>
       </li> -->
     </ul>
+    <!-- ------------------------------swiper + 무비차트 -->
+    <h2>무비차트 2026</h2>
+    <section class="chart">
+      <div class="swiper chart_swiper">
+        <div class="swiper-wrapper">
+          <!-- <div class="swiper-slide">
+            이미지는 background 처리
+            <p class="num">1</p>
+            <h3>어벤져스</h3>
+            <p class="rating">9.2</p>
+            <p class="story">지구를 위협하는..</p>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <h2>애니메이션차트 2026</h2>
+    <section class="chart2">
+      <div class="swiper anime_swiper">
+        <div class="swiper-wrapper">
+          <!-- 아래는 js 복제예정(swiper) -->
+            <!-- <div class="swiper-slide">
+            이미지는 background 처리
+            <h3>마루밑아리에티</h3>
+            <p class="genre">애니메이션, 판타지</p>
+          </div> -->
+        </div>
+      </div>
+    </section>
   </main>
 </body>
 </html>

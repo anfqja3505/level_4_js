@@ -6,3 +6,23 @@ main h2{margin: 20px 0;}
 main ul {display: flex; flex-flow: row wrap;}
 main ul li {width: 33.33%;}
 
+/* 2026 무비차트 */
+.chart {}
+.chart .chart_swiper {}
+.chart .chart_swiper .swiper-wrapper {}
+.chart .chart_swiper .swiper-wrapper .swiper-slide {
+    height:200px;
+    background-size: cover;
+    background-position: center;
+    display: flex; flex-flow: column nowrap; justify-content: flex-end;
+}
+.chart .chart_swiper .swiper-wrapper .swiper-slide::after {
+    content: ''; display: block;
+    width: 100%; height: 30%;
+    position: absolute; left: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+}
+.chart .chart_swiper .swiper-wrapper .swiper-slide > * {
+    position: relative; z-index: 100;
+    font-size: 0.65em;
+}
