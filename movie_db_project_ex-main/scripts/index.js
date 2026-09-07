@@ -61,8 +61,13 @@ for(i=0; i<5; i++){
 
 const anime_swiper = document.querySelector('.anime_swiper');
 const anime_swiper_func = new Swiper(anime_swiper,{
-    slidesPerView:2,
-    spaceBetween:10,
+    slidesPerView:3,
+    spaceBetween:5,
+    loop:true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false, 
+    },
 })
 
 for(i=0; i<9; i++){
